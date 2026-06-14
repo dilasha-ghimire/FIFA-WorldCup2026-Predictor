@@ -1,4 +1,4 @@
-# FIFA World Cup 2026 Match Predictor
+# FIFA World Cup 2026 Predictor
 
 A data science project that predicts all 72 FIFA World Cup 2026 group stage matches using Elo-based modelling and Monte Carlo simulation across 100,000 simulations.
 
@@ -63,12 +63,6 @@ Run Monte Carlo simulation:
 
 ```bash
 python simulate.py
-```
-
-Launch the dashboard (Day 3):
-
-```bash
-streamlit run app.py
 ```
 
 ---
