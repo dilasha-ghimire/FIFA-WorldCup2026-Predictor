@@ -1,6 +1,8 @@
-# WC 2026 Match Predictor
+# FIFA World Cup 2026 Match Predictor
 
-A data science project that predicts all 72 FIFA World Cup 2026 group stage matches using Elo-based modelling and Monte Carlo simulation, then tracks prediction accuracy against live results in real time.
+A data science project that predicts all 72 FIFA World Cup 2026 group stage matches using Elo-based modelling and Monte Carlo simulation across 100,000 simulations.
+
+![Banner](image/image.png)
 
 ---
 
@@ -14,6 +16,9 @@ wc2026-predictor/
 │   ├── fifa_ranking_2022-10-06.csv    # FIFA rankings Oct 2022
 │   ├── fifa_ranking_2026-06-08.csv    # FIFA rankings Jun 2026
 │   └── schedule_2026.csv              # WC 2026 group stage fixtures
+│
+├── image/
+│   └── image.png                      # Project banner
 │
 ├── predictions/
 │   ├── wc2026_predictions.json        # 72 pre-generated match predictions
