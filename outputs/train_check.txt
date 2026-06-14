@@ -1,0 +1,196 @@
+﻿
+WC 2026 Match Predictor - Generating Predictions
+
+
+Loading datasets...
+  [matches]       688 group stage matches loaded (1930û2022)
+  [rankings 2022] 211 teams loaded (Oct 2022)
+  [rankings 2026] 211 teams loaded (Jun 2026)
+  [schedule]      72 fixtures loaded (WC 2026 group stage)
+  Done.
+
+Building head-to-head records...
+  Done - 688 matches processed
+
+Generating predictions...
+  40 team1 wins | 0 draws | 32 team2 wins
+
+Saved 72 predictions -> predictions/wc2026_predictions.json
+
+All predictions:
+  ID    Teams                                  Prediction             W%  / D%  / L%
+  ------------------------------------------------------------------------------
+
+  -- Group A --
+  A1    Mexico vs South Africa                 Mexico                 70.3% / 19.8% / 10.0%
+  A2    South Korea vs Czech Republic          South Korea            47.9% / 22.9% / 29.2%
+
+  -- Group B --
+  B1    Canada vs Bosnia and Herzegovina       Canada                 64.1% / 20.8% / 15.0%
+
+  -- Group C --
+  C1    United States vs Paraguay              United States          63.6% / 20.9% / 15.4%
+
+  -- Group B --
+  B2    Qatar vs Switzerland                   Switzerland            18.9% / 21.5% / 59.6%
+
+  -- Group D --
+  D1    Brazil vs Morocco                      Brazil                 39.2% / 23.9% / 36.9%
+  D2    Haiti vs Scotland                      Scotland               18.1% / 21.4% / 60.6%
+
+  -- Group C --
+  C2    Australia vs Turkey                    Turkey                 35.3% / 23.7% / 41.1%
+
+  -- Group E --
+  E1    Germany vs Curacao                     Germany                75.5% / 18.5% / 6.0%
+
+  -- Group F --
+  F1    Netherlands vs Japan                   Netherlands            48.3% / 22.9% / 28.8%
+
+  -- Group E --
+  E2    Ivory Coast vs Ecuador                 Ecuador                32.1% / 23.3% / 44.7%
+
+  -- Group F --
+  F2    Sweden vs Tunisia                      Sweden                 41.9% / 23.6% / 34.5%
+
+  -- Group G --
+  G1    Belgium vs Egypt                       Belgium                57.7% / 21.8% / 20.5%
+
+  -- Group H --
+  H1    Spain vs Cape Verde                    Spain                  77.9% / 17.7% / 4.3%
+
+  -- Group G --
+  G2    Iran vs New Zealand                    Iran                   70.6% / 19.7% / 9.7%
+
+  -- Group H --
+  H2    Saudi Arabia vs Uruguay                Uruguay                15.1% / 20.9% / 64.1%
+
+  -- Group I --
+  I1    France vs Senegal                      France                 58.0% / 21.7% / 20.2%
+  I2    Iraq vs Norway                         Norway                 27.2% / 22.7% / 50.1%
+
+  -- Group J --
+  J1    Argentina vs Algeria                   Argentina              68.1% / 20.2% / 11.8%
+  J2    Austria vs Jordan                      Austria                60.5% / 21.4% / 18.1%
+
+  -- Group K --
+  K1    Portugal vs Congo DR                   Portugal               66.8% / 20.4% / 12.8%
+
+  -- Group L --
+  L1    England vs Croatia                     England                50.8% / 22.6% / 26.6%
+  L2    Ghana vs Panama                        Panama                 19.5% / 21.6% / 58.9%
+
+  -- Group K --
+  K2    Uzbekistan vs Colombia                 Colombia               16.1% / 21.0% / 62.9%
+
+  -- Group A --
+  A3    Czech Republic vs South Africa         Czech Republic         46.9% / 23.0% / 30.1%
+
+  -- Group B --
+  B3    Switzerland vs Bosnia and Herzegovina  Switzerland            65.0% / 20.7% / 14.3%
+  B4    Canada vs Qatar                        Canada                 58.6% / 21.6% / 19.7%
+
+  -- Group A --
+  A4    Mexico vs South Korea                  Mexico                 59.0% / 20.1% / 20.9%
+
+  -- Group C --
+  C3    United States vs Australia             United States          57.0% / 21.9% / 21.2%
+
+  -- Group D --
+  D3    Scotland vs Morocco                    Morocco                15.0% / 20.9% / 64.1%
+
+  -- Group C --
+  C4    Turkey vs Paraguay                     Turkey                 49.5% / 22.7% / 27.8%
+
+  -- Group D --
+  D4    Brazil vs Haiti                        Brazil                 76.9% / 18.1% / 5.1%
+
+  -- Group F --
+  F3    Netherlands vs Sweden                  Netherlands            63.2% / 21.0% / 15.8%
+
+  -- Group E --
+  E3    Germany vs Ivory Coast                 Germany                59.2% / 21.6% / 19.3%
+  E4    Ecuador vs Curacao                     Ecuador                68.0% / 20.2% / 11.8%
+
+  -- Group F --
+  F4    Tunisia vs Japan                       Japan                  20.1% / 21.7% / 58.3%
+
+  -- Group H --
+  H3    Spain vs Saudi Arabia                  Spain                  76.0% / 18.4% / 5.7%
+
+  -- Group G --
+  G3    Belgium vs Iran                        Belgium                51.9% / 22.5% / 25.6%
+
+  -- Group H --
+  H4    Uruguay vs Cape Verde                  Uruguay                67.8% / 20.2% / 11.9%
+
+  -- Group G --
+  G4    New Zealand vs Egypt                   Egypt                  12.8% / 20.4% / 66.8%
+
+  -- Group J --
+  J3    Argentina vs Austria                   Argentina              66.2% / 20.5% / 13.3%
+
+  -- Group I --
+  I3    France vs Iraq                         France                 74.5% / 18.8% / 6.7%
+  I4    Norway vs Senegal                      Senegal                25.0% / 22.4% / 52.6%
+
+  -- Group J --
+  J4    Jordan vs Algeria                      Algeria                20.2% / 21.7% / 58.1%
+
+  -- Group K --
+  K3    Portugal vs Uzbekistan                 Portugal               68.1% / 20.2% / 11.8%
+
+  -- Group L --
+  L3    England vs Ghana                       England                77.1% / 18.0% / 4.9%
+  L4    Panama vs Croatia                      Croatia                20.9% / 21.8% / 57.3%
+
+  -- Group K --
+  K4    Colombia vs Congo DR                   Colombia               61.3% / 21.3% / 17.4%
+
+  -- Group B --
+  B5    Switzerland vs Canada                  Switzerland            39.2% / 23.9% / 36.9%
+  B6    Bosnia and Herzegovina vs Qatar        Qatar                  31.5% / 23.2% / 45.3%
+
+  -- Group D --
+  D5    Scotland vs Brazil                     Brazil                 13.2% / 21.1% / 65.8%
+  D6    Morocco vs Haiti                       Morocco                76.4% / 18.2% / 5.3%
+
+  -- Group A --
+  A5    South Africa vs South Korea            South Korea            21.9% / 22.0% / 56.1%
+  A6    Czech Republic vs Mexico               Mexico                 14.4% / 20.7% / 64.9%
+
+  -- Group E --
+  E5    Curacao vs Ivory Coast                 Ivory Coast            15.4% / 20.9% / 63.6%
+  E6    Ecuador vs Germany                     Germany                24.3% / 22.3% / 53.5%
+
+  -- Group F --
+  F5    Japan vs Sweden                        Japan                  55.0% / 22.1% / 22.9%
+  F6    Tunisia vs Netherlands                 Netherlands            13.6% / 20.6% / 65.9%
+
+  -- Group C --
+  C5    Paraguay vs Australia                  Australia              30.4% / 23.1% / 46.5%
+  C6    Turkey vs United States                United States          23.5% / 22.2% / 54.3%
+
+  -- Group I --
+  I5    Norway vs France                       France                 11.4% / 20.1% / 68.5%
+  I6    Senegal vs Iraq                        Senegal                62.7% / 21.1% / 16.2%
+
+  -- Group H --
+  H5    Uruguay vs Spain                       Spain                  18.9% / 21.5% / 59.6%
+  H6    Cape Verde vs Saudi Arabia             Saudi Arabia           32.8% / 23.4% / 43.8%
+
+  -- Group G --
+  G5    Egypt vs Iran                          Iran                   32.1% / 23.3% / 44.6%
+  G6    New Zealand vs Belgium                 Belgium                5.2% / 18.2% / 76.6%
+
+  -- Group L --
+  L5    Panama vs England                      England                12.7% / 20.4% / 66.9%
+  L6    Croatia vs Ghana                       Croatia                71.9% / 19.4% / 8.7%
+
+  -- Group K --
+  K5    Colombia vs Portugal                   Portugal               31.0% / 23.2% / 45.8%
+  K6    Congo DR vs Uzbekistan                 Congo DR               40.1% / 23.8% / 36.1%
+
+  -- Group J --
+  J5    Jordan vs Argentina                    Argentina              4.7% / 17.9% / 77.4%
+  J6    Algeria vs Austria                     Austria                35.3% / 23.7% / 41.1%
