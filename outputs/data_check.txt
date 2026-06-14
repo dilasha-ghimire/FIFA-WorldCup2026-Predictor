@@ -1,0 +1,59 @@
+﻿
+Loading datasets...
+  [matches]       688 group stage matches loaded (1930û2022)
+  [rankings 2022] 211 teams loaded (Oct 2022)
+  [rankings 2026] 211 teams loaded (Jun 2026)
+  [schedule]      72 fixtures loaded (WC 2026 group stage)
+  Done.
+
+-- Sample matches (last 5) -----------------
+ year     home_team away_team  home_score  away_score
+ 1930     Argentina    France           1           0
+ 1930    Yugoslavia    Brazil           2           1
+ 1930       Romania      Peru           3           1
+ 1930 United States   Belgium           3           0
+ 1930        France    Mexico           4           1
+
+-- Sample 2026 schedule (first 12) ---------
+match_id group         team1                  team2       date
+      A1     A        Mexico           South Africa 2026-06-11
+      A2     A   South Korea         Czech Republic 2026-06-11
+      B1     B        Canada Bosnia and Herzegovina 2026-06-12
+      C1     C United States               Paraguay 2026-06-12
+      B2     B         Qatar            Switzerland 2026-06-13
+      D1     D        Brazil                Morocco 2026-06-13
+      D2     D         Haiti               Scotland 2026-06-13
+      C2     C     Australia                 Turkey 2026-06-13
+      E1     E       Germany                Curacao 2026-06-14
+      F1     F   Netherlands                  Japan 2026-06-14
+      E2     E   Ivory Coast                Ecuador 2026-06-14
+      F2     F        Sweden                Tunisia 2026-06-14
+
+-- Top 10 FIFA rankings (Jun 2026) ---------
+   1. Argentina                 1876.1
+   2. Spain                     1873.0
+   3. France                    1869.4
+   4. England                   1827.0
+   5. Portugal                  1766.2
+   6. Brazil                    1765.9
+   7. Morocco                   1755.1
+   8. Netherlands               1751.1
+   9. Belgium                   1742.2
+  10. Germany                   1735.8
+
+-- 2026 schedule teams missing from rankings -
+  None - all teams have rankings [OK]
+
+-- Group assignments -------------------------
+  Group A: Czech Republic, Mexico, South Africa, South Korea
+  Group B: Bosnia and Herzegovina, Canada, Qatar, Switzerland
+  Group C: Australia, Paraguay, Turkey, United States
+  Group D: Brazil, Haiti, Morocco, Scotland
+  Group E: Curacao, Ecuador, Germany, Ivory Coast
+  Group F: Japan, Netherlands, Sweden, Tunisia
+  Group G: Belgium, Egypt, Iran, New Zealand
+  Group H: Cape Verde, Saudi Arabia, Spain, Uruguay
+  Group I: France, Iraq, Norway, Senegal
+  Group J: Algeria, Argentina, Austria, Jordan
+  Group K: Colombia, Congo DR, Portugal, Uzbekistan
+  Group L: Croatia, England, Ghana, Panama
