@@ -1,0 +1,245 @@
+{
+  "n_simulations": 100000,
+  "results": [
+    {
+      "team": "Argentina",
+      "wins": 12992,
+      "probability": 12.99
+    },
+    {
+      "team": "Spain",
+      "wins": 12493,
+      "probability": 12.49
+    },
+    {
+      "team": "France",
+      "wins": 11629,
+      "probability": 11.63
+    },
+    {
+      "team": "England",
+      "wins": 8756,
+      "probability": 8.76
+    },
+    {
+      "team": "Brazil",
+      "wins": 5188,
+      "probability": 5.19
+    },
+    {
+      "team": "Mexico",
+      "wins": 4953,
+      "probability": 4.95
+    },
+    {
+      "team": "Portugal",
+      "wins": 4645,
+      "probability": 4.64
+    },
+    {
+      "team": "Morocco",
+      "wins": 4350,
+      "probability": 4.35
+    },
+    {
+      "team": "Netherlands",
+      "wins": 4114,
+      "probability": 4.11
+    },
+    {
+      "team": "Belgium",
+      "wins": 4055,
+      "probability": 4.06
+    },
+    {
+      "team": "United States",
+      "wins": 3992,
+      "probability": 3.99
+    },
+    {
+      "team": "Germany",
+      "wins": 3899,
+      "probability": 3.9
+    },
+    {
+      "team": "Croatia",
+      "wins": 2750,
+      "probability": 2.75
+    },
+    {
+      "team": "Colombia",
+      "wins": 2283,
+      "probability": 2.28
+    },
+    {
+      "team": "Senegal",
+      "wins": 1848,
+      "probability": 1.85
+    },
+    {
+      "team": "Uruguay",
+      "wins": 1807,
+      "probability": 1.81
+    },
+    {
+      "team": "Japan",
+      "wins": 1437,
+      "probability": 1.44
+    },
+    {
+      "team": "Switzerland",
+      "wins": 1362,
+      "probability": 1.36
+    },
+    {
+      "team": "Canada",
+      "wins": 1209,
+      "probability": 1.21
+    },
+    {
+      "team": "Iran",
+      "wins": 848,
+      "probability": 0.85
+    },
+    {
+      "team": "Ecuador",
+      "wins": 654,
+      "probability": 0.65
+    },
+    {
+      "team": "Turkey",
+      "wins": 651,
+      "probability": 0.65
+    },
+    {
+      "team": "South Korea",
+      "wins": 613,
+      "probability": 0.61
+    },
+    {
+      "team": "Austria",
+      "wins": 566,
+      "probability": 0.57
+    },
+    {
+      "team": "Algeria",
+      "wins": 407,
+      "probability": 0.41
+    },
+    {
+      "team": "Australia",
+      "wins": 388,
+      "probability": 0.39
+    },
+    {
+      "team": "Egypt",
+      "wins": 372,
+      "probability": 0.37
+    },
+    {
+      "team": "Norway",
+      "wins": 295,
+      "probability": 0.29
+    },
+    {
+      "team": "Ivory Coast",
+      "wins": 240,
+      "probability": 0.24
+    },
+    {
+      "team": "Panama",
+      "wins": 215,
+      "probability": 0.21
+    },
+    {
+      "team": "Czech Republic",
+      "wins": 152,
+      "probability": 0.15
+    },
+    {
+      "team": "Sweden",
+      "wins": 145,
+      "probability": 0.14
+    },
+    {
+      "team": "Scotland",
+      "wins": 140,
+      "probability": 0.14
+    },
+    {
+      "team": "Paraguay",
+      "wins": 116,
+      "probability": 0.12
+    },
+    {
+      "team": "Congo DR",
+      "wins": 80,
+      "probability": 0.08
+    },
+    {
+      "team": "Tunisia",
+      "wins": 73,
+      "probability": 0.07
+    },
+    {
+      "team": "Uzbekistan",
+      "wins": 58,
+      "probability": 0.06
+    },
+    {
+      "team": "Qatar",
+      "wins": 62,
+      "probability": 0.06
+    },
+    {
+      "team": "Saudi Arabia",
+      "wins": 38,
+      "probability": 0.04
+    },
+    {
+      "team": "Iraq",
+      "wins": 37,
+      "probability": 0.04
+    },
+    {
+      "team": "South Africa",
+      "wins": 35,
+      "probability": 0.03
+    },
+    {
+      "team": "Jordan",
+      "wins": 9,
+      "probability": 0.01
+    },
+    {
+      "team": "Curacao",
+      "wins": 5,
+      "probability": 0.01
+    },
+    {
+      "team": "Cape Verde",
+      "wins": 9,
+      "probability": 0.01
+    },
+    {
+      "team": "Bosnia and Herzegovina",
+      "wins": 15,
+      "probability": 0.01
+    },
+    {
+      "team": "Ghana",
+      "wins": 10,
+      "probability": 0.01
+    },
+    {
+      "team": "Haiti",
+      "wins": 3,
+      "probability": 0.0
+    },
+    {
+      "team": "New Zealand",
+      "wins": 2,
+      "probability": 0.0
+    }
+  ]
+}
