@@ -20,14 +20,14 @@ wc2026-predictor/
 ├── image/
 │   └── image.png                      # Project banner
 │
-├── predictions/
-│   ├── wc2026_predictions.json        # 72 pre-generated match predictions
-│   └── wc2026_simulation.json         # Monte Carlo tournament win probabilities
-│
 ├── outputs/
 │   ├── data_check.txt                 # data.py run output
 │   ├── train_check.txt                # train_model.py run output
 │   └── simulate_check.txt             # simulate.py run output
+│
+├── predictions/
+│   ├── wc2026_predictions.json        # 72 pre-generated match predictions
+│   └── wc2026_simulation.json         # Monte Carlo tournament win probabilities
 │
 ├── data.py                            # Loads and processes all datasets
 ├── train_model.py                     # Elo prediction engine
@@ -240,3 +240,14 @@ After 100,000 runs, divide each team's tally by 100,000 to get their win probabi
 **NOTE:** Predictions are based purely on FIFA ranking points and historical results. The model does not account for squad injuries, current form, or tactical factors.
 
 ---
+
+## Techniques Used (Data Science)
+
+| What has been used                               | Field                    |
+| ------------------------------------------------ | ------------------------ |
+| Data cleaning, normalization, merging            | Data Engineering         |
+| Elo rating formula                               | Quantitative Modelling   |
+| Historical statistics (head-to-head, draw rates) | Statistical Analysis     |
+| Monte Carlo simulation                           | Computational Statistics |
+| Live API + accuracy tracking                     | Data Pipeline            |
+| Streamlit dashboard                              | Data Visualization       |
