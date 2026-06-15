@@ -429,7 +429,7 @@ for p in filtered:
 
 df = pd.DataFrame(rows)
 df.insert(0, "Match No.", range(1, len(df) + 1))
-df = df.reset_index(drop=True)
+df = df.set_index("Match No.")
 
 def color_result(val):
     v = str(val)
@@ -452,7 +452,6 @@ styled = (
         ("border-bottom", f"1.5px solid {BORDER}"),
         ("font-family", "Inter, sans-serif"),
     ]}])
-    .hide(axis="index")
 )
 
 row_height = 35
