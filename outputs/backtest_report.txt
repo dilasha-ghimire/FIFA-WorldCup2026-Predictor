@@ -1,0 +1,36 @@
+WC 2026 Predictor - Backtest Report
+=======================================================
+Method: Train on data before each test year, predict that year
+Test tournaments: 2010, 2014, 2018, 2022
+
+2010 World Cup (48 matches)
+  Exact accuracy:     45.8%   (random: 33.3%)
+  Team held:          75.0%
+  Genuinely wrong:    25.0%
+  Actual outcomes:    33.3% wins / 29.2% draws / 37.5% losses
+
+2014 World Cup (48 matches)
+  Exact accuracy:     54.2%   (random: 33.3%)
+  Team held:          72.9%
+  Genuinely wrong:    27.1%
+  Actual outcomes:    39.6% wins / 18.8% draws / 41.7% losses
+
+2018 World Cup (48 matches)
+  Exact accuracy:     68.8%   (random: 33.3%)
+  Team held:          87.5%
+  Genuinely wrong:    12.5%
+  Actual outcomes:    35.4% wins / 18.8% draws / 45.8% losses
+
+2022 World Cup (48 matches)
+  Exact accuracy:     54.2%   (random: 33.3%)
+  Team held:          75.0%
+  Genuinely wrong:    25.0%
+  Actual outcomes:    39.6% wins / 20.8% draws / 39.6% losses
+
+=======================================================
+OVERALL (192 matches across 4 tournaments)
+  Exact accuracy:     55.7%
+  Random baseline:    33.3%
+  Improvement:        +22.4 percentage points
+  Team held:          77.6%
+  Genuinely wrong:    22.4%

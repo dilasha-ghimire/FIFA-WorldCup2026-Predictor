@@ -1,0 +1,91 @@
+{
+  "test_years": [
+    2010,
+    2014,
+    2018,
+    2022
+  ],
+  "overall": {
+    "matches": 192,
+    "exact_correct": 107,
+    "exact_accuracy": 55.7,
+    "no_upset": 149,
+    "no_upset_accuracy": 77.6,
+    "genuinely_wrong": 43,
+    "genuinely_wrong_pct": 22.4
+  },
+  "by_tournament": [
+    {
+      "year": 2010,
+      "metrics": {
+        "matches": 48,
+        "exact_correct": 22,
+        "exact_accuracy": 45.8,
+        "no_upset": 36,
+        "no_upset_accuracy": 75.0,
+        "genuinely_wrong": 12,
+        "genuinely_wrong_pct": 25.0
+      },
+      "baseline": {
+        "random_exact_accuracy": 33.3,
+        "actual_team1_wins": 33.3,
+        "actual_draws": 29.2,
+        "actual_team2_wins": 37.5
+      }
+    },
+    {
+      "year": 2014,
+      "metrics": {
+        "matches": 48,
+        "exact_correct": 26,
+        "exact_accuracy": 54.2,
+        "no_upset": 35,
+        "no_upset_accuracy": 72.9,
+        "genuinely_wrong": 13,
+        "genuinely_wrong_pct": 27.1
+      },
+      "baseline": {
+        "random_exact_accuracy": 33.3,
+        "actual_team1_wins": 39.6,
+        "actual_draws": 18.8,
+        "actual_team2_wins": 41.7
+      }
+    },
+    {
+      "year": 2018,
+      "metrics": {
+        "matches": 48,
+        "exact_correct": 33,
+        "exact_accuracy": 68.8,
+        "no_upset": 42,
+        "no_upset_accuracy": 87.5,
+        "genuinely_wrong": 6,
+        "genuinely_wrong_pct": 12.5
+      },
+      "baseline": {
+        "random_exact_accuracy": 33.3,
+        "actual_team1_wins": 35.4,
+        "actual_draws": 18.8,
+        "actual_team2_wins": 45.8
+      }
+    },
+    {
+      "year": 2022,
+      "metrics": {
+        "matches": 48,
+        "exact_correct": 26,
+        "exact_accuracy": 54.2,
+        "no_upset": 36,
+        "no_upset_accuracy": 75.0,
+        "genuinely_wrong": 12,
+        "genuinely_wrong_pct": 25.0
+      },
+      "baseline": {
+        "random_exact_accuracy": 33.3,
+        "actual_team1_wins": 39.6,
+        "actual_draws": 20.8,
+        "actual_team2_wins": 39.6
+      }
+    }
+  ]
+}
