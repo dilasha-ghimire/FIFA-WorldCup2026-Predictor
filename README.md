@@ -36,6 +36,7 @@ wc2026-predictor/
 ├── train_model.py                     # Elo prediction engine
 ├── simulate.py                        # Monte Carlo tournament simulator
 ├── fetch_results.py                   # Fetches live results + tracks accuracy
+├── app.py                             # Streamlit live dashboard
 ├── README.md                          # Project documentation
 ├── requirements.txt                   # Python dependencies
 └── .gitignore                         # Files excluded from version control
@@ -73,6 +74,12 @@ Fetch live results and update accuracy:
 
 ```bash
 python fetch_results.py
+```
+
+Launch the dashboard:
+
+```bash
+python -m streamlit run app.py
 ```
 
 ---
@@ -291,6 +298,42 @@ A draw when we predicted a win is not the same as being completely wrong. The mo
 | `update_predictions(predictions, results)` | Matches API results to predictions, sets correct/wrong flags        |
 | `calculate_accuracy(predictions)`          | Computes all three accuracy metrics                                 |
 | `print_report(predictions, accuracy)`      | Prints and saves the accuracy report                                |
+
+---
+
+## Step 8 — Streamlit Dashboard (`app.py`)
+
+### Live app
+
+_Coming soon — deploying on Streamlit Community Cloud_
+
+### What it shows
+
+- **Prediction accuracy** — 5 metric cards showing matches played, exact accuracy, team held, genuinely wrong, and upcoming matches
+- **Results breakdown** — donut chart splitting completed matches into correct, draw (not wrong), wrong, and upcoming
+- **Tournament win probability** — horizontal bar chart of top 16 teams from the Monte Carlo simulation
+- **All predictions** — filterable table of all 72 matches with predicted winner, actual score, win/draw/loss probabilities, and result status
+
+### Features
+
+- Light mode (default) and dark mode toggle
+- Filter matches by group (A–L) and status (All / Completed / Upcoming)
+- Auto-refreshes every 5 minutes to pick up new results
+- Colour-coded results — ✅ correct, 〰️ draw, ❌ wrong, ⏳ upcoming
+
+### How to run locally
+
+```bash
+python -m streamlit run app.py
+```
+
+### Key functions
+
+| Function            | What it does                                                                                         |
+| ------------------- | ---------------------------------------------------------------------------------------------------- |
+| `load_data()`       | Loads predictions, fetches live results, returns accuracy and simulation data. Cached for 5 minutes. |
+| `color_result(val)` | Colours the Result column green / amber / red based on outcome                                       |
+| `style_table(df)`   | Applies theme-aware styling to the match table                                                       |
 
 ---
 
