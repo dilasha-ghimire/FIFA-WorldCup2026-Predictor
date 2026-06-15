@@ -11,9 +11,10 @@ Comparing results to predictions...
 
 Saving...
   Saved updated predictions -> predictions/wc2026_predictions.json
+  Saved accuracy summary  -> predictions/accuracy_summary.json
 
 WC 2026 Prediction Accuracy Report
-Generated: 2026-06-15 06:43 UTC
+Generated: 2026-06-15 06:57 UTC
 -------------------------------------------------------
 Total matches:         72
 Completed:             12

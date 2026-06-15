@@ -304,6 +304,11 @@ if __name__ == "__main__":
     print("\nSaving...")
     save_predictions(predictions)
 
+    # Save accuracy summary as a separate JSON for the Streamlit app to read directly
+    with open("predictions/accuracy_summary.json", "w") as f:
+        json.dump(accuracy, f, indent=2)
+    print("  Saved accuracy summary  -> predictions/accuracy_summary.json")
+
     # Print and save report
     print_report(predictions, accuracy)
 

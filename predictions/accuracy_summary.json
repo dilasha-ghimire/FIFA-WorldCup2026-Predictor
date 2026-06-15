@@ -1,0 +1,12 @@
+{
+  "total_matches": 72,
+  "completed": 12,
+  "upcoming": 60,
+  "exact_correct": 6,
+  "exact_accuracy": 50.0,
+  "no_upset": 10,
+  "no_upset_accuracy": 83.3,
+  "genuinely_wrong": 2,
+  "genuinely_wrong_pct": 16.7,
+  "last_updated": "2026-06-15 06:57 UTC"
+}

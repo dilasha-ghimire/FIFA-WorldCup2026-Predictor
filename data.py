@@ -57,6 +57,7 @@ TEAM_NAME_MAP = {
     "Côte d'Ivoire":            "Ivory Coast",
     "Cote d'Ivoire":            "Ivory Coast",
     "Bosnia-Herzegovina":       "Bosnia and Herzegovina",
+    "Bosnia & Herzegovina":     "Bosnia and Herzegovina",
     "West Germany":             "Germany",
     "Serbia and Montenegro":    "Serbia",
     "DR Congo":                 "Congo DR",
