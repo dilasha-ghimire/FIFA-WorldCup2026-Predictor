@@ -25,17 +25,21 @@ wc2026-predictor/
 │   ├── train_check.txt                # train_model.py run output
 │   ├── simulate_check.txt             # simulate.py run output
 │   ├── fetch_check.txt                # fetch_results.py run output
-│   └── accuracy_report.txt            # latest prediction accuracy report
+│   ├── backtest_check.txt             # backtest.py run output
+│   ├── accuracy_report.txt            # latest prediction accuracy report
+│   └── backtest_report.txt            # backtesting accuracy report
 │
 ├── predictions/
 │   ├── wc2026_predictions.json        # 72 predictions (updated with live results)
 │   ├── wc2026_simulation.json         # Monte Carlo tournament win probabilities
-│   └── accuracy_summary.json          # accuracy metrics for Streamlit app
+│   ├── accuracy_summary.json          # accuracy metrics for Streamlit app
+│   └── backtest_results.json          # backtesting results across 2010-2022
 │
 ├── data.py                            # Loads and processes all datasets
 ├── train_model.py                     # Elo prediction engine
 ├── simulate.py                        # Monte Carlo tournament simulator
 ├── fetch_results.py                   # Fetches live results + tracks accuracy
+├── backtest.py                        # Validates model on past World Cups
 ├── app.py                             # Streamlit live dashboard
 ├── README.md                          # Project documentation
 ├── requirements.txt                   # Python dependencies
@@ -76,6 +80,12 @@ Fetch live results and update accuracy:
 python fetch_results.py
 ```
 
+Validate model on past World Cups:
+
+```bash
+python backtest.py
+```
+
 Launch the dashboard:
 
 ```bash
@@ -103,11 +113,13 @@ Four files are used:
 
 ## Step 2 — Project Structure
 
-The project is split into four Python files, each with a single responsibility:
+The project is split into six Python files, each with a single responsibility:
 
 - `data.py` — loads and cleans all four CSVs
 - `train_model.py` — generates predictions using the Elo formula
 - `simulate.py` — runs Monte Carlo tournament simulations
+- `fetch_results.py` — fetches live results and tracks accuracy
+- `backtest.py` — validates the model on past World Cups
 - `app.py` — displays everything as a live Streamlit dashboard
 
 Dependencies are listed in `requirements.txt`. Install them with:
@@ -301,7 +313,46 @@ A draw when we predicted a win is not the same as being completely wrong. The mo
 
 ---
 
-## Step 8 — Streamlit Dashboard (`app.py`)
+## Step 8 — Model Validation (`backtest.py`)
+
+### Why backtesting matters
+
+A model that only predicts future matches cannot be evaluated until those matches happen. Backtesting solves this by testing the model on past tournaments it has never seen — giving a reliable estimate of how accurate it actually is before a single 2026 match is played.
+
+### Method
+
+For each test tournament (2010, 2014, 2018, 2022):
+
+1. Train on all historical matches **before** that tournament
+2. Predict every group stage match in that tournament
+3. Compare predictions to actual results
+4. Report accuracy metrics
+
+This is a strict train/test split. The model never sees the test year's data during training, preventing data leakage.
+
+### Results
+
+| Tournament  | Exact Accuracy | vs Random Guess (33.3%) |
+| ----------- | -------------- | ----------------------- |
+| 2010        | 45.8%          | +12.5pts                |
+| 2014        | 54.2%          | +20.9pts                |
+| 2018        | 68.8%          | +35.5pts                |
+| 2022        | 54.2%          | +20.9pts                |
+| **Overall** | **55.7%**      | **+22.4pts**            |
+
+Across 192 matches over 4 tournaments, the model achieves 55.7% exact accuracy — 22.4 percentage points above the 33.3% expected from random guessing across 3 possible outcomes (win/draw/loss).
+
+### Key functions
+
+| Function                                       | What it does                                                             |
+| ---------------------------------------------- | ------------------------------------------------------------------------ |
+| `backtest_tournament(year, matches, rankings)` | Trains on pre-year data, predicts that year, returns match-level results |
+| `calculate_metrics(results)`                   | Computes exact accuracy, favourite not beaten %, and completely wrong %  |
+| `random_baseline(results)`                     | Returns the 33.3% random guess baseline and actual outcome distribution  |
+
+---
+
+## Step 9 — Streamlit Dashboard (`app.py`)
 
 ### Live app
 
@@ -345,5 +396,52 @@ python -m streamlit run app.py
 | Elo rating formula                               | Quantitative Modelling   |
 | Historical statistics (head-to-head, draw rates) | Statistical Analysis     |
 | Monte Carlo simulation                           | Computational Statistics |
+| Train/test split backtesting                     | Model Validation         |
 | Live API + accuracy tracking                     | Data Pipeline            |
 | Streamlit dashboard                              | Data Visualization       |
+
+---
+
+## QnA(s)
+
+### Q1: Why does your model predict Argentina and not France or Spain like most people say?
+
+**Answer:** Because the model does not follow popular opinion. It uses FIFA ranking points from June 2026, where Argentina is ranked number 1. When I ran the tournament 100,000 times using those rankings, Argentina wins slightly more often than France or Spain but only by a tiny margin. Argentina wins 13% of simulations, Spain 12.49%, France 11.63%. That is not a bold prediction, it is a statistical outcome where three teams are essentially equal at the top.
+
+### Q2: What does 55.7% accuracy actually mean?
+
+**Answer:** It means that when the model was tested on 192 real World Cup group stage matches from 2010 to 2022, it correctly predicted the exact outcome (win, draw, or loss) 55.7% of the time. For comparison, if you picked randomly between three outcomes, you would be right 33.3% of the time. So the model is 22 percentage points better than random guessing across four tournaments it had never seen during training.
+
+### Q3: Why is the random guess baseline 33.3% and not 50%?
+
+**Answer:** Because football has three possible outcomes: the first team wins, the second team wins, or they draw. A 50% baseline would only apply if there were two outcomes like a coin flip. With three outcomes, random guessing gives you a 1 in 3 chance, which is 33.3%.
+
+### Q4: Why does the model say Argentina has a 13% chance of winning? That seems low.
+
+**Answer:** It is actually the correct range for a 48 team tournament. Even the strongest team in the world cannot win more than about 15 to 20% of the time when there are 48 teams and the knockout rounds introduce so much randomness. If the model had Argentina at 40%, that would be a sign something is wrong. At 13%, it is saying Argentina is the most likely winner while still being honest that almost 9 out of 10 times, someone else wins.
+
+### Q5: What is backtesting and why did you add it?
+
+**Answer:** Backtesting means testing the model on past tournaments it never saw during training. For each of the 2010, 2014, 2018 and 2022 World Cups, I trained the model using only data from before that year, then predicted every match in that year, then compared to what actually happened. This proves the model works on real data it had no access to, not just data it was built on. Without this, anyone could fairly ask "how do you know it works?" With it, there is a concrete answer.
+
+### Q6: Why did the model perform so differently across years, with 68.8% in 2018 but only 45.8% in 2010?
+
+**Answer:** Because football is genuinely unpredictable and different tournaments have different levels of upset. The 2018 World Cup had fewer major surprises, so a rankings based model performed well. The 2010 World Cup had more upsets, so any model based on rankings would struggle. This variance across years is actually a sign the model is behaving realistically rather than overfitting to one era.
+
+### Q7: What is the Elo formula and why did you choose it over a machine learning model?
+
+**Answer:** Elo is a mathematical formula originally designed for chess that calculates the probability one team beats another based on the gap between their ranking points. I chose it over machine learning because World Cup data is very limited. There are only about 688 group stage matches across all tournaments since 1930, which is not enough data for machine learning to find reliable patterns. Elo is simpler, more interpretable, and better suited to small datasets with high uncertainty, which is exactly what international football is.
+
+### Q8: What does Monte Carlo simulation actually do in this project?
+
+**Answer:** Instead of just saying "Argentina will win," the simulation runs the entire tournament 100,000 times. In each run, every match outcome is decided by rolling a weighted dice based on the Elo probabilities. Some runs Argentina wins, some runs France wins, some runs a surprise team wins. After 100,000 runs the count of how often each team won becomes their probability of winning the World Cup. It gives an honest picture of uncertainty rather than a single confident but potentially wrong prediction.
+
+### Q9: Why is 83.3% favourite not beaten more useful than 50% exact accuracy?
+
+**Answer:** Because in football, predicting a draw is genuinely hard. When the model predicts a stronger team to win and the match ends in a draw instead, the stronger team was not beaten. That is meaningfully different from being completely wrong. The 83.3% figure shows that in 10 out of 12 completed matches so far, the team I identified as stronger either won or drew. Only 2 matches had a result where the team expected to win actually lost. That distinction matters when evaluating a prediction model on a sport where draws are common.
+
+### Q10: What would you do to make this model even better?
+
+**Answer:** Three things. First, add a Poisson goal model to predict scorelines instead of just win, draw or loss, which would make the simulation more realistic especially in knockout rounds. Second, build a dynamic Elo system that updates team ratings after every simulated match within the tournament, because a team that just won 3 group stage matches is not the same strength as one that barely qualified. Third, compare the model probabilities against bookmaker odds to measure how well calibrated the predictions are. These additions would move it from a validated model to a professional grade forecasting system.
+
+---
