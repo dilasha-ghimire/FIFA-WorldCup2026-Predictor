@@ -248,7 +248,7 @@ with title_col:
 
 with toggle_col:
     st.markdown("<br>", unsafe_allow_html=True)
-    label = "☀️ Light" if D else "🌙 Dark"
+    label = "☀️ Change to Light Mode" if D else "🌙 Change to Dark Mode"
     if st.button(label, use_container_width=True):
         st.session_state.dark_mode = not st.session_state.dark_mode
         st.rerun()
@@ -466,6 +466,70 @@ st.caption(f"Showing {len(filtered)} of {len(predictions)} matches · Results up
 # ─────────────────────────────────────────────────────────────
 # FOOTER + AUTO REFRESH
 # ─────────────────────────────────────────────────────────────
+
+# ─────────────────────────────────────────────────────────────
+# BACKTEST RESULTS
+# ─────────────────────────────────────────────────────────────
+
+st.markdown('<div class="section-header">Model Validation — Past World Cups</div>', unsafe_allow_html=True)
+
+try:
+    with open("predictions/backtest_results.json") as f:
+        backtest = json.load(f)
+
+    overall = backtest["overall"]
+
+    # Overall summary card
+    st.markdown(f"""
+    <div style="background:{METRIC_BG};border:1.5px solid {BORDER};border-radius:12px;padding:20px 24px;margin-bottom:16px;">
+        <div style="color:{MUTED};font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;">
+            Overall across {len(backtest["test_years"])} past tournaments ({overall["matches"]} matches)
+        </div>
+        <div style="display:flex;gap:32px;flex-wrap:wrap;">
+            <div>
+                <div style="color:{TEXT};font-size:28px;font-weight:800;">{overall["exact_accuracy"]}%</div>
+                <div style="color:{MUTED};font-size:11px;margin-top:2px;">Exact accuracy</div>
+            </div>
+            <div>
+                <div style="color:{GREEN};font-size:28px;font-weight:800;">+{round(overall["exact_accuracy"] - 33.3, 1)}pts</div>
+                <div style="color:{MUTED};font-size:11px;margin-top:2px;">Above random baseline (33.3%)</div>
+            </div>
+            <div>
+                <div style="color:{TEXT};font-size:28px;font-weight:800;">{overall["no_upset_accuracy"]}%</div>
+                <div style="color:{MUTED};font-size:11px;margin-top:2px;">Predicted team held</div>
+            </div>
+            <div>
+                <div style="color:{RED};font-size:28px;font-weight:800;">{overall["genuinely_wrong_pct"]}%</div>
+                <div style="color:{MUTED};font-size:11px;margin-top:2px;">Genuinely wrong</div>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Per tournament cards
+    cols = st.columns(len(backtest["by_tournament"]))
+    for col, t in zip(cols, backtest["by_tournament"]):
+        m = t["metrics"]
+        b = t["baseline"]
+        improvement = round(m["exact_accuracy"] - 33.3, 1)
+        color = GREEN if improvement >= 20 else AMBER
+        with col:
+            st.markdown(f"""
+            <div style="background:{METRIC_BG};border:1.5px solid {BORDER};border-radius:10px;padding:16px 14px;">
+                <div style="color:{MUTED};font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:10px;">{t["year"]} World Cup</div>
+                <div style="color:{TEXT};font-size:22px;font-weight:800;margin-bottom:2px;">{m["exact_accuracy"]}%</div>
+                <div style="color:{color};font-size:12px;font-weight:600;margin-bottom:10px;">+{improvement}pts vs random</div>
+                <div style="color:{MUTED};font-size:11px;margin-bottom:3px;">Team held: {m["no_upset_accuracy"]}%</div>
+                <div style="color:{MUTED};font-size:11px;margin-bottom:3px;">Wrong: {m["genuinely_wrong_pct"]}%</div>
+                <div style="color:{MUTED};font-size:11px;">{m["matches"]} matches</div>
+            </div>
+            """, unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.caption("How it is tested: The model predicted each past tournament using only data from before that year — results it had never seen before.")
+
+except FileNotFoundError:
+    st.caption("Run python backtest.py to generate validation results.")
 
 time.sleep(300)
 st.rerun()
