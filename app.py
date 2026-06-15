@@ -492,15 +492,15 @@ try:
             </div>
             <div>
                 <div style="color:{GREEN};font-size:28px;font-weight:800;">+{round(overall["exact_accuracy"] - 33.3, 1)}pts</div>
-                <div style="color:{MUTED};font-size:11px;margin-top:2px;">Above random baseline (33.3%)</div>
+                <div style="color:{MUTED};font-size:11px;margin-top:2px;">Better than coin flip (33.3% chance)</div>
             </div>
             <div>
                 <div style="color:{TEXT};font-size:28px;font-weight:800;">{overall["no_upset_accuracy"]}%</div>
-                <div style="color:{MUTED};font-size:11px;margin-top:2px;">Predicted team held</div>
+                <div style="color:{MUTED};font-size:11px;margin-top:2px;">Favourite not beaten</div>
             </div>
             <div>
                 <div style="color:{RED};font-size:28px;font-weight:800;">{overall["genuinely_wrong_pct"]}%</div>
-                <div style="color:{MUTED};font-size:11px;margin-top:2px;">Genuinely wrong</div>
+                <div style="color:{MUTED};font-size:11px;margin-top:2px;">Completely wrong</div>
             </div>
         </div>
     </div>
@@ -518,7 +518,7 @@ try:
             <div style="background:{METRIC_BG};border:1.5px solid {BORDER};border-radius:10px;padding:16px 14px;">
                 <div style="color:{MUTED};font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:10px;">{t["year"]} World Cup</div>
                 <div style="color:{TEXT};font-size:22px;font-weight:800;margin-bottom:2px;">{m["exact_accuracy"]}%</div>
-                <div style="color:{color};font-size:12px;font-weight:600;margin-bottom:10px;">+{improvement}pts vs random</div>
+                <div style="color:{color};font-size:12px;font-weight:600;margin-bottom:10px;">+{improvement}pts better than guessing</div>
                 <div style="color:{MUTED};font-size:11px;margin-bottom:3px;">Team held: {m["no_upset_accuracy"]}%</div>
                 <div style="color:{MUTED};font-size:11px;margin-bottom:3px;">Wrong: {m["genuinely_wrong_pct"]}%</div>
                 <div style="color:{MUTED};font-size:11px;">{m["matches"]} matches</div>
@@ -526,7 +526,7 @@ try:
             """, unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
-    st.caption("How it is tested: The model predicted each past tournament using only data from before that year — results it had never seen before.")
+    st.caption("How it is tested: The model is backtested on the last 4 World Cups (2010-2022) using only pre-tournament data. No tuning, no hindsight. Accuracy is measured against actual results and compared to a 33.3% coin flip baseline (the expected accuracy if you picked win, draw or loss at random for every match).")
 
 except FileNotFoundError:
     st.caption("Run python backtest.py to generate validation results.")
