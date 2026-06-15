@@ -28,7 +28,10 @@ from train_model import build_h2h, predict_match
 # CONSTANTS
 # ─────────────────────────────────────────────────────────────
 
-# Test on the last 4 World Cups — enough matches for statistical significance
+# Test on the last 4 World Cups — enough matches for statistical significance.
+# We use 4 tournaments (192 matches total) because:
+#   - Single tournament (48 matches) is too small for reliable statistics
+#   - More tournaments = more confidence the model generalises across eras
 TEST_YEARS = [2010, 2014, 2018, 2022]
 
 
@@ -41,13 +44,20 @@ def backtest_tournament(test_year, all_matches, rankings):
     Trains on all matches before test_year, predicts test_year matches,
     compares to actual results.
 
+    This is a strict train/test split — the model never sees the test
+    year's data during training. This prevents data leakage, which is
+    the most common mistake in sports prediction projects.
+
     Returns a list of result dicts, one per match.
     """
-    # Split: train on everything before this tournament
+    # Split: train on everything before this tournament.
+    # Example: for test_year=2018, we train on 1930–2014 only.
+    # The 2018 matches are held out completely until prediction time.
     train_matches = all_matches[all_matches["year"] < test_year]
     test_matches  = all_matches[all_matches["year"] == test_year]
 
-    # Build h2h records from training data only
+    # Build h2h records from training data only.
+    # This means head-to-head history is also strictly pre-test-year.
     h2h = build_h2h(train_matches)
 
     results = []
@@ -57,7 +67,7 @@ def backtest_tournament(test_year, all_matches, rankings):
         hs = row["home_score"]
         as_ = row["away_score"]
 
-        # Actual outcome
+        # Determine the actual outcome from the real match scoreline
         if hs > as_:
             actual = "team1_win"
         elif hs == as_:
@@ -65,9 +75,15 @@ def backtest_tournament(test_year, all_matches, rankings):
         else:
             actual = "team2_win"
 
-        # Predicted outcome using Elo
+        # Run our Elo model to get win/draw/loss probabilities.
+        # We use the 2022 FIFA rankings as a proxy for team strength
+        # since per-year rankings aren't available in our dataset.
+        # This is a known limitation — teams' relative strengths don't
+        # change dramatically enough to invalidate the comparison.
         p1w, pdraw, p2w = predict_match(t1, t2, rankings, h2h)
 
+        # The predicted outcome is whichever probability is highest.
+        # This is called the "argmax" prediction strategy.
         if p1w >= p2w and p1w >= pdraw:
             predicted = "team1_win"
             predicted_winner = t1
@@ -78,18 +94,21 @@ def backtest_tournament(test_year, all_matches, rankings):
             predicted = "draw"
             predicted_winner = "Draw"
 
-        # Exact match
+        # Metric 1: exact match — did we get the exact outcome right?
         exact = predicted == actual
 
-        # No upset: predicted team didn't lose
+        # Metric 2: no upset — did the team we predicted to win avoid losing?
+        # A draw when we predicted a win is not the same as being completely wrong.
+        # If we predicted team1 to win and they drew, the stronger team wasn't beaten.
         if predicted == "team1_win":
-            no_upset = actual != "team2_win"
+            no_upset = actual != "team2_win"   # win or draw = not upset
         elif predicted == "team2_win":
-            no_upset = actual != "team1_win"
+            no_upset = actual != "team1_win"   # win or draw = not upset
         else:
-            no_upset = actual == "draw"
+            no_upset = actual == "draw"         # we predicted draw, got draw
 
-        # Genuinely wrong: the other team won entirely
+        # Metric 3: genuinely wrong — the completely wrong team won.
+        # This is the harshest failure mode: we said team1 wins, team2 won.
         genuinely_wrong = (
             (predicted == "team1_win" and actual == "team2_win") or
             (predicted == "team2_win" and actual == "team1_win") or
@@ -120,12 +139,20 @@ def backtest_tournament(test_year, all_matches, rankings):
 # ─────────────────────────────────────────────────────────────
 
 def calculate_metrics(results):
+    """
+    Computes the three accuracy metrics across a list of match results.
+
+    We report three metrics rather than one because football prediction
+    has three possible outcomes — a single accuracy number hides important
+    information about where the model succeeds and where it fails.
+    """
     n = len(results)
     if n == 0:
         return {}
 
-    exact          = sum(1 for r in results if r["exact"])
-    no_upset       = sum(1 for r in results if r["no_upset"])
+    # Count each metric across all matches
+    exact           = sum(1 for r in results if r["exact"])
+    no_upset        = sum(1 for r in results if r["no_upset"])
     genuinely_wrong = sum(1 for r in results if r["genuinely_wrong"])
 
     return {
@@ -149,6 +176,12 @@ def random_baseline(results):
     gives 33.3% exact accuracy. This is the baseline to beat.
     We also calculate what % of actual results were each outcome
     to show the real distribution.
+
+    Why we need a baseline:
+    If our model achieves 55% accuracy but draws only occur 20% of the time,
+    a naive model that always predicts "no draw" would also beat 33.3%.
+    Reporting the actual outcome distribution shows the model isn't just
+    exploiting a class imbalance.
     """
     n = len(results)
     outcome_counts = defaultdict(int)
@@ -170,13 +203,14 @@ def random_baseline(results):
 if __name__ == "__main__":
     print("\nWC 2026 Predictor - Backtesting\n")
 
-    # Load all data
+    # Load all data — we need the full historical dataset for train/test splits
     all_matches, rankings, rankings_2026, schedule = load_all()
 
     all_results = []
     tournament_summaries = []
 
-    # Run backtest for each test year
+    # Run backtest for each test year.
+    # Each iteration is fully independent — no information leaks between years.
     for year in TEST_YEARS:
         print(f"Testing on {year} World Cup...")
         results = backtest_tournament(year, all_matches, rankings)
@@ -185,8 +219,8 @@ if __name__ == "__main__":
 
         all_results.extend(results)
         tournament_summaries.append({
-            "year":    year,
-            "metrics": metrics,
+            "year":     year,
+            "metrics":  metrics,
             "baseline": baseline,
         })
 
@@ -196,7 +230,8 @@ if __name__ == "__main__":
         print(f"  Genuinely wrong:{metrics['genuinely_wrong_pct']}%")
         print()
 
-    # Overall metrics across all 4 tournaments
+    # Aggregate results across all 4 tournaments.
+    # 192 matches is a statistically meaningful sample size for football prediction.
     overall = calculate_metrics(all_results)
     print(f"Overall across {len(TEST_YEARS)} tournaments ({overall['matches']} matches):")
     print(f"  Exact accuracy:  {overall['exact_accuracy']}%  (random baseline: 33.3%)")
@@ -204,18 +239,18 @@ if __name__ == "__main__":
     print(f"  Genuinely wrong: {overall['genuinely_wrong_pct']}%")
     print(f"  Improvement over random: +{round(overall['exact_accuracy'] - 33.3, 1)} percentage points")
 
-    # Save results
+    # Save structured results as JSON for further analysis or display in the app
     os.makedirs("outputs", exist_ok=True)
     output = {
-        "test_years":           TEST_YEARS,
-        "overall":              overall,
-        "by_tournament":        tournament_summaries,
+        "test_years":    TEST_YEARS,
+        "overall":       overall,
+        "by_tournament": tournament_summaries,
     }
 
     with open("predictions/backtest_results.json", "w") as f:
         json.dump(output, f, indent=2)
 
-    # Save readable report
+    # Save human-readable report
     lines = []
     lines.append("WC 2026 Predictor - Backtest Report")
     lines.append("=" * 55)
