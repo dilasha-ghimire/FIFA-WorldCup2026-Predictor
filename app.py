@@ -27,8 +27,8 @@ from fetch_results import fetch_results, update_predictions, calculate_accuracy
 # ─────────────────────────────────────────────────────────────
 
 st.set_page_config(
-    page_title            = "WC 2026 Predictor",
-    page_icon             = "🏆",
+    page_title            = "World Cup 2026 Predictor",
+    page_icon             = "image/logo.png",
     layout                = "wide",
     initial_sidebar_state = "collapsed",
 )
@@ -248,7 +248,7 @@ with title_col:
 
 with toggle_col:
     st.markdown("<br>", unsafe_allow_html=True)
-    label = "☀️ Change to Light Mode" if D else "🌙 Change to Dark Mode"
+    label = "Change to Light Mode" if D else "Change to Dark Mode"
     if st.button(label, use_container_width=True):
         st.session_state.dark_mode = not st.session_state.dark_mode
         st.rerun()
