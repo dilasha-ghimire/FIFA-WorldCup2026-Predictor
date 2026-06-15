@@ -269,34 +269,37 @@ with toggle_col:
 
 st.markdown('<div class="section-header">Prediction Accuracy</div>', unsafe_allow_html=True)
 
-st.markdown(f"""
-<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:8px;">
-  <div style="background:{METRIC_BG};border:1.5px solid {BORDER};border-radius:12px;padding:20px 16px;">
-    <div style="color:{MUTED};font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">Matches Played</div>
-    <div style="color:{TEXT};font-size:26px;font-weight:800;letter-spacing:-0.02em;">{accuracy['completed']} / {accuracy['total_matches']}</div>
-  </div>
-  <div style="background:{METRIC_BG};border:1.5px solid {BORDER};border-radius:12px;padding:20px 16px;">
-    <div style="color:{MUTED};font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">Exact Accuracy</div>
-    <div style="color:{TEXT};font-size:26px;font-weight:800;letter-spacing:-0.02em;">{accuracy['exact_accuracy']}%</div>
-    <div style="color:{MUTED};font-size:11px;margin-top:4px;">predicted outcome matched exactly</div>
-  </div>
-  <div style="background:{METRIC_BG};border:1.5px solid {BORDER};border-radius:12px;padding:20px 16px;">
-    <div style="color:{MUTED};font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">Team Held</div>
-    <div style="color:{TEXT};font-size:26px;font-weight:800;letter-spacing:-0.02em;">{accuracy['no_upset_accuracy']}%</div>
-    <div style="color:{MUTED};font-size:11px;margin-top:4px;">predicted team won or drew</div>
-  </div>
-  <div style="background:{METRIC_BG};border:1.5px solid {BORDER};border-radius:12px;padding:20px 16px;">
-    <div style="color:{MUTED};font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">Genuinely Wrong</div>
-    <div style="color:{TEXT};font-size:26px;font-weight:800;letter-spacing:-0.02em;">{accuracy['genuinely_wrong_pct']}%</div>
-    <div style="color:{MUTED};font-size:11px;margin-top:4px;">the other team won entirely</div>
-  </div>
-  <div style="background:{METRIC_BG};border:1.5px solid {BORDER};border-radius:12px;padding:20px 16px;">
-    <div style="color:{MUTED};font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">Upcoming</div>
-    <div style="color:{TEXT};font-size:26px;font-weight:800;letter-spacing:-0.02em;">{accuracy['upcoming']}</div>
-    <div style="color:{MUTED};font-size:11px;margin-top:4px;">matches remaining</div>
-  </div>
-</div>
-""", unsafe_allow_html=True)
+c1, c2, c3, c4, c5 = st.columns(5)
+with c1:
+    st.markdown(f"""<div style="background:{METRIC_BG};border:1.5px solid {BORDER};border-radius:10px;padding:14px 12px;">
+    <div style="color:{MUTED};font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">Matches</div>
+    <div style="color:{TEXT};font-size:20px;font-weight:800;">{accuracy['completed']}/{accuracy['total_matches']}</div>
+    <div style="color:{MUTED};font-size:11px;margin-top:4px;">completed</div>
+    </div>""", unsafe_allow_html=True)
+with c2:
+    st.markdown(f"""<div style="background:{METRIC_BG};border:1.5px solid {BORDER};border-radius:10px;padding:14px 12px;">
+    <div style="color:{MUTED};font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">Exact Accuracy</div>
+    <div style="color:{TEXT};font-size:20px;font-weight:800;">{accuracy['exact_accuracy']}%</div>
+    <div style="color:{MUTED};font-size:10px;margin-top:4px;">matched exactly</div>
+    </div>""", unsafe_allow_html=True)
+with c3:
+    st.markdown(f"""<div style="background:{METRIC_BG};border:1.5px solid {BORDER};border-radius:10px;padding:14px 12px;">
+    <div style="color:{MUTED};font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">Team Held</div>
+    <div style="color:{TEXT};font-size:20px;font-weight:800;">{accuracy['no_upset_accuracy']}%</div>
+    <div style="color:{MUTED};font-size:10px;margin-top:4px;">won or drew</div>
+    </div>""", unsafe_allow_html=True)
+with c4:
+    st.markdown(f"""<div style="background:{METRIC_BG};border:1.5px solid {BORDER};border-radius:10px;padding:14px 12px;">
+    <div style="color:{MUTED};font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">Genuinely Wrong</div>
+    <div style="color:{TEXT};font-size:20px;font-weight:800;">{accuracy['genuinely_wrong_pct']}%</div>
+    <div style="color:{MUTED};font-size:10px;margin-top:4px;">other team won</div>
+    </div>""", unsafe_allow_html=True)
+with c5:
+    st.markdown(f"""<div style="background:{METRIC_BG};border:1.5px solid {BORDER};border-radius:10px;padding:14px 12px;">
+    <div style="color:{MUTED};font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">Upcoming</div>
+    <div style="color:{TEXT};font-size:20px;font-weight:800;">{accuracy['upcoming']}</div>
+    <div style="color:{MUTED};font-size:10px;margin-top:4px;">remaining</div>
+    </div>""", unsafe_allow_html=True)
 
 # ─────────────────────────────────────────────────────────────
 # CHARTS
