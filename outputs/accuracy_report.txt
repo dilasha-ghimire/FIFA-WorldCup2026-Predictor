@@ -1,0 +1,38 @@
+WC 2026 Prediction Accuracy Report
+Generated: 2026-06-15 06:43 UTC
+-------------------------------------------------------
+Total matches:         72
+Completed:             12
+Upcoming:              60
+-------------------------------------------------------
+Exact accuracy:        6/12 = 50.0%
+  (predicted outcome matched exactly)
+Predicted team held:   10/12 = 83.3%
+  (our team won or drew — was not beaten)
+Genuinely wrong:       2/12 = 16.7%
+  (the other team won entirely)
+-------------------------------------------------------
+
+Completed matches:
+  Match  Teams                               Predicted       Actual     Result
+  ---------------------------------------------------------------------------
+  A1     Mexico vs South Africa              Mexico          2-0        CORRECT
+  A2     South Korea vs Czech Republic       South Korea     2-1        CORRECT
+  B1     Canada vs Bosnia and Herzegovina    Canada          1-1        WRONG
+  C1     United States vs Paraguay           United States   4-1        CORRECT
+  B2     Qatar vs Switzerland                Switzerland     1-1        WRONG
+  D1     Brazil vs Morocco                   Brazil          1-1        WRONG
+  D2     Haiti vs Scotland                   Scotland        0-1        CORRECT
+  C2     Australia vs Turkey                 Turkey          2-0        WRONG
+  E1     Germany vs Curacao                  Germany         7-1        CORRECT
+  F1     Netherlands vs Japan                Netherlands     2-2        WRONG
+  E2     Ivory Coast vs Ecuador              Ecuador         1-0        WRONG
+  F2     Sweden vs Tunisia                   Sweden          5-1        CORRECT
+
+Upcoming matches (60 remaining):
+  G1     Belgium vs Egypt (2026-06-15)
+  H1     Spain vs Cape Verde (2026-06-15)
+  G2     Iran vs New Zealand (2026-06-15)
+  H2     Saudi Arabia vs Uruguay (2026-06-15)
+  I1     France vs Senegal (2026-06-16)
+  ... and 55 more

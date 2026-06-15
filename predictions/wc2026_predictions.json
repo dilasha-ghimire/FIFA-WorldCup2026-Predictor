@@ -12,11 +12,11 @@
     "prob_team1_win": 70.3,
     "prob_draw": 19.8,
     "prob_team2_win": 10.0,
-    "actual_score_team1": null,
-    "actual_score_team2": null,
-    "actual_outcome": null,
-    "correct": null,
-    "status": "upcoming"
+    "actual_score_team1": 2,
+    "actual_score_team2": 0,
+    "actual_outcome": "team1_win",
+    "correct": true,
+    "status": "completed"
   },
   {
     "match_id": "A2",
@@ -31,11 +31,11 @@
     "prob_team1_win": 47.9,
     "prob_draw": 22.9,
     "prob_team2_win": 29.2,
-    "actual_score_team1": null,
-    "actual_score_team2": null,
-    "actual_outcome": null,
-    "correct": null,
-    "status": "upcoming"
+    "actual_score_team1": 2,
+    "actual_score_team2": 1,
+    "actual_outcome": "team1_win",
+    "correct": true,
+    "status": "completed"
   },
   {
     "match_id": "B1",
@@ -50,11 +50,11 @@
     "prob_team1_win": 64.1,
     "prob_draw": 20.8,
     "prob_team2_win": 15.0,
-    "actual_score_team1": null,
-    "actual_score_team2": null,
-    "actual_outcome": null,
-    "correct": null,
-    "status": "upcoming"
+    "actual_score_team1": 1,
+    "actual_score_team2": 1,
+    "actual_outcome": "draw",
+    "correct": false,
+    "status": "completed"
   },
   {
     "match_id": "C1",
@@ -69,11 +69,11 @@
     "prob_team1_win": 63.6,
     "prob_draw": 20.9,
     "prob_team2_win": 15.4,
-    "actual_score_team1": null,
-    "actual_score_team2": null,
-    "actual_outcome": null,
-    "correct": null,
-    "status": "upcoming"
+    "actual_score_team1": 4,
+    "actual_score_team2": 1,
+    "actual_outcome": "team1_win",
+    "correct": true,
+    "status": "completed"
   },
   {
     "match_id": "B2",
@@ -88,11 +88,11 @@
     "prob_team1_win": 18.9,
     "prob_draw": 21.5,
     "prob_team2_win": 59.6,
-    "actual_score_team1": null,
-    "actual_score_team2": null,
-    "actual_outcome": null,
-    "correct": null,
-    "status": "upcoming"
+    "actual_score_team1": 1,
+    "actual_score_team2": 1,
+    "actual_outcome": "draw",
+    "correct": false,
+    "status": "completed"
   },
   {
     "match_id": "D1",
@@ -107,11 +107,11 @@
     "prob_team1_win": 39.2,
     "prob_draw": 23.9,
     "prob_team2_win": 36.9,
-    "actual_score_team1": null,
-    "actual_score_team2": null,
-    "actual_outcome": null,
-    "correct": null,
-    "status": "upcoming"
+    "actual_score_team1": 1,
+    "actual_score_team2": 1,
+    "actual_outcome": "draw",
+    "correct": false,
+    "status": "completed"
   },
   {
     "match_id": "D2",
@@ -126,11 +126,11 @@
     "prob_team1_win": 18.1,
     "prob_draw": 21.4,
     "prob_team2_win": 60.6,
-    "actual_score_team1": null,
-    "actual_score_team2": null,
-    "actual_outcome": null,
-    "correct": null,
-    "status": "upcoming"
+    "actual_score_team1": 0,
+    "actual_score_team2": 1,
+    "actual_outcome": "team2_win",
+    "correct": true,
+    "status": "completed"
   },
   {
     "match_id": "C2",
@@ -145,11 +145,11 @@
     "prob_team1_win": 35.3,
     "prob_draw": 23.7,
     "prob_team2_win": 41.1,
-    "actual_score_team1": null,
-    "actual_score_team2": null,
-    "actual_outcome": null,
-    "correct": null,
-    "status": "upcoming"
+    "actual_score_team1": 2,
+    "actual_score_team2": 0,
+    "actual_outcome": "team1_win",
+    "correct": false,
+    "status": "completed"
   },
   {
     "match_id": "E1",
@@ -164,11 +164,11 @@
     "prob_team1_win": 75.5,
     "prob_draw": 18.5,
     "prob_team2_win": 6.0,
-    "actual_score_team1": null,
-    "actual_score_team2": null,
-    "actual_outcome": null,
-    "correct": null,
-    "status": "upcoming"
+    "actual_score_team1": 7,
+    "actual_score_team2": 1,
+    "actual_outcome": "team1_win",
+    "correct": true,
+    "status": "completed"
   },
   {
     "match_id": "F1",
@@ -183,11 +183,11 @@
     "prob_team1_win": 48.3,
     "prob_draw": 22.9,
     "prob_team2_win": 28.8,
-    "actual_score_team1": null,
-    "actual_score_team2": null,
-    "actual_outcome": null,
-    "correct": null,
-    "status": "upcoming"
+    "actual_score_team1": 2,
+    "actual_score_team2": 2,
+    "actual_outcome": "draw",
+    "correct": false,
+    "status": "completed"
   },
   {
     "match_id": "E2",
@@ -202,11 +202,11 @@
     "prob_team1_win": 32.1,
     "prob_draw": 23.3,
     "prob_team2_win": 44.7,
-    "actual_score_team1": null,
-    "actual_score_team2": null,
-    "actual_outcome": null,
-    "correct": null,
-    "status": "upcoming"
+    "actual_score_team1": 1,
+    "actual_score_team2": 0,
+    "actual_outcome": "team1_win",
+    "correct": false,
+    "status": "completed"
   },
   {
     "match_id": "F2",
@@ -221,11 +221,11 @@
     "prob_team1_win": 41.9,
     "prob_draw": 23.6,
     "prob_team2_win": 34.5,
-    "actual_score_team1": null,
-    "actual_score_team2": null,
-    "actual_outcome": null,
-    "correct": null,
-    "status": "upcoming"
+    "actual_score_team1": 5,
+    "actual_score_team2": 1,
+    "actual_outcome": "team1_win",
+    "correct": true,
+    "status": "completed"
   },
   {
     "match_id": "G1",
