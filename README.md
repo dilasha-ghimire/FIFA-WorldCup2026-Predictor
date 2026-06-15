@@ -23,15 +23,19 @@ wc2026-predictor/
 ├── outputs/
 │   ├── data_check.txt                 # data.py run output
 │   ├── train_check.txt                # train_model.py run output
-│   └── simulate_check.txt             # simulate.py run output
+│   ├── simulate_check.txt             # simulate.py run output
+│   ├── fetch_check.txt                # fetch_results.py run output
+│   └── accuracy_report.txt            # latest prediction accuracy report
 │
 ├── predictions/
-│   ├── wc2026_predictions.json        # 72 pre-generated match predictions
-│   └── wc2026_simulation.json         # Monte Carlo tournament win probabilities
+│   ├── wc2026_predictions.json        # 72 predictions (updated with live results)
+│   ├── wc2026_simulation.json         # Monte Carlo tournament win probabilities
+│   └── accuracy_summary.json          # accuracy metrics for Streamlit app
 │
 ├── data.py                            # Loads and processes all datasets
 ├── train_model.py                     # Elo prediction engine
 ├── simulate.py                        # Monte Carlo tournament simulator
+├── fetch_results.py                   # Fetches live results + tracks accuracy
 ├── README.md                          # Project documentation
 ├── requirements.txt                   # Python dependencies
 └── .gitignore                         # Files excluded from version control
@@ -63,6 +67,12 @@ Run Monte Carlo simulation:
 
 ```bash
 python simulate.py
+```
+
+Fetch live results and update accuracy:
+
+```bash
+python fetch_results.py
 ```
 
 ---
@@ -238,6 +248,49 @@ After 100,000 runs, divide each team's tally by 100,000 to get their win probabi
 | 8    | Morocco   | 4.35%           |
 
 **NOTE:** Predictions are based purely on FIFA ranking points and historical results. The model does not account for squad injuries, current form, or tactical factors.
+
+---
+
+## Step 7 — Live Results & Accuracy Tracking (`fetch_results.py`)
+
+### Data source
+
+Results are fetched from [openfootball/worldcup.json](https://github.com/openfootball/worldcup.json) — a free, open-source dataset updated within 24 hours of each match ending. No API key required.
+
+### Logic
+
+1. Fetch the live JSON from GitHub
+2. Filter to completed group stage matches only (matches with a `score.ft` field)
+3. Normalize team names to match our predictions (e.g. `"USA"` → `"United States"`)
+4. Compare each result to our pre-generated prediction
+5. Save updated `wc2026_predictions.json` and `accuracy_summary.json`
+
+### Three accuracy metrics
+
+A draw when we predicted a win is not the same as being completely wrong. The model reports three levels of accuracy:
+
+| Metric              | Meaning                                           |
+| ------------------- | ------------------------------------------------- |
+| Exact accuracy      | Predicted outcome matched exactly (win/draw/loss) |
+| Predicted team held | Our predicted team won or drew — was not beaten   |
+| Genuinely wrong     | The other team won entirely                       |
+
+### Current accuracy (as of June 15, 2026)
+
+| Metric              | Result        |
+| ------------------- | ------------- |
+| Exact accuracy      | 6/12 = 50.0%  |
+| Predicted team held | 10/12 = 83.3% |
+| Genuinely wrong     | 2/12 = 16.7%  |
+
+### Key functions
+
+| Function                                   | What it does                                                        |
+| ------------------------------------------ | ------------------------------------------------------------------- |
+| `fetch_results()`                          | Fetches live JSON, filters completed matches, normalizes team names |
+| `update_predictions(predictions, results)` | Matches API results to predictions, sets correct/wrong flags        |
+| `calculate_accuracy(predictions)`          | Computes all three accuracy metrics                                 |
+| `print_report(predictions, accuracy)`      | Prints and saves the accuracy report                                |
 
 ---
 
