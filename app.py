@@ -325,8 +325,8 @@ with left:
         paper_bgcolor="rgba(0,0,0,0)",
         plot_bgcolor="rgba(0,0,0,0)",
         showlegend=False,
-        margin=dict(t=10, b=10, l=10, r=10),
-        height=270,
+        margin=dict(t=40, b=10, l=10, r=10),
+        height=380,
         font=dict(family="Inter", color=TEXT),
         annotations=[dict(
             text=f"<b>{accuracy['exact_accuracy']}%</b><br><span style='font-size:11px'>exact</span>",
