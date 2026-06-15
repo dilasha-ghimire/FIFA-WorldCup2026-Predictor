@@ -240,7 +240,7 @@ def load_data():
 title_col, spacer, toggle_col = st.columns([4, 2, 1])
 
 with title_col:
-    st.markdown('<div class="main-title">🏆 WC 2026 Predictor</div>', unsafe_allow_html=True)
+    st.markdown('<div class="main-title">FIFA World Cup 2026 Predictor</div>', unsafe_allow_html=True)
     st.markdown(
         '<div class="main-subtitle">Elo-based match predictions tracked against live results in real time</div>',
         unsafe_allow_html=True,
@@ -428,6 +428,8 @@ for p in filtered:
     })
 
 df = pd.DataFrame(rows)
+df.insert(0, "Match No.", range(1, len(df) + 1))
+df = df.reset_index(drop=True)
 
 def color_result(val):
     v = str(val)
@@ -453,7 +455,10 @@ styled = (
     .hide(axis="index")
 )
 
-st.dataframe(styled, use_container_width=True, height=480)
+row_height = 35
+header_height = 38
+dynamic_height = min(header_height + row_height * len(filtered), 600)
+st.dataframe(styled, use_container_width=True, height=dynamic_height)
 st.caption(f"Showing {len(filtered)} of {len(predictions)} matches · Results update within 24hrs of each match")
 
 # ─────────────────────────────────────────────────────────────
