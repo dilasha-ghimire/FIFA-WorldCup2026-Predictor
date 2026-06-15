@@ -364,6 +364,7 @@ Across 192 matches over 4 tournaments, the model achieves 55.7% exact accuracy �
 - **Results breakdown** — donut chart splitting completed matches into correct, draw (not wrong), wrong, and upcoming
 - **Tournament win probability** — horizontal bar chart of top 16 teams from the Monte Carlo simulation
 - **All predictions** — filterable table of all 72 matches with predicted winner, actual score, win/draw/loss probabilities, and result status
+- **Model validation** — backtesting results across 4 past World Cups (2010–2022) showing exact accuracy, improvement over random guessing, and per-tournament breakdown
 
 ### Features
 
