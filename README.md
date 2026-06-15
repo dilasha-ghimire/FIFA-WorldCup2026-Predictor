@@ -356,7 +356,7 @@ Across 192 matches over 4 tournaments, the model achieves 55.7% exact accuracy â
 
 ### Live app
 
-_Coming soon â€” deploying on Streamlit Community Cloud_
+**https://fifawc26predictor.streamlit.app/**
 
 ### What it shows
 
